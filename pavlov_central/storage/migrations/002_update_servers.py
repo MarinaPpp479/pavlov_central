@@ -26,16 +26,22 @@ import peewee as pw
 def migrate(migrator, database, fake=False, **kwargs):
     """Write your migrations here."""
 
-    @migrator.create_model
-    class Server(pw.Model):
-        name = pw.TextField(primary_key=True)
-        ip = pw.IPField()
+    migrator.python(insert_roles, database, migrator)
 
-        class Meta:
-            table_name = "servers"
 
+def insert_roles(db, migrator):
+    serv_table = migrator.orm['servers']
+    data_to_insert = [
+        {'name': 'local', 'ip':  '127.0.0.1'},
+        {'name': 'main-central', 'ip':  '10.10.10.10'},
+        {'name': 'backup-central', 'ip':  '192.168.1.10'}
+    ]
+    with db.atomic():
+        serv_table.insert_many(data_to_insert).execute()
 
 def rollback(migrator, database, fake=False, **kwargs):
     """Write your rollback migrations here."""
 
-    migrator.remove_model('server')
+    print('Insert failed')
+
+

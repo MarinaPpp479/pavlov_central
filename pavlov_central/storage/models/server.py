@@ -8,7 +8,7 @@ class Server(BaseModel):
     ip = pw.IPField()
 
     class Meta:
-        table_name = 'server'
+        table_name = 'servers'
 
     @property
     def serialize(self):

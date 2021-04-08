@@ -32,7 +32,7 @@ def migrate(migrator, database, fake=False, **kwargs):
         ip = pw.IPField()
 
         class Meta:
-            table_name = "server"
+            table_name = "servers"
 
 
 def rollback(migrator, database, fake=False, **kwargs):

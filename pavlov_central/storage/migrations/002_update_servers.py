@@ -30,7 +30,7 @@ def migrate(migrator, database, fake=False, **kwargs):
 
 
 def insert_roles(db, migrator):
-    serv_table = migrator.orm['server']
+    serv_table = migrator.orm['servers']
     data_to_insert = [
         {'name': 'local', 'ip':  '127.0.0.1'},
         {'name': 'main-central', 'ip':  '10.10.10.10'},

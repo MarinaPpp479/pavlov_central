@@ -3,3 +3,4 @@ venv
 .idea
 *.iml
 pavlov_central/api/auto_generated_api
+__pycache__

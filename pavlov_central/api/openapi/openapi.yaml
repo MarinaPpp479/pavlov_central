@@ -22,6 +22,22 @@ tags:
     description: Game moderators
 
 paths:
+  /players:
+    get:
+      tags:
+        - players
+      summary: Get player list
+      description: |
+        Get game player list
+      x-openapi-router-controller: pavlov_central.api.controllers.player_api
+      operationId: handle_get_player_list
+      responses:
+        '200':
+          description: return player list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Players'
   /servers:
     get:
       tags:
@@ -138,3 +154,21 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Server'
+    Player:
+      type: object
+      properties:
+        email:
+          type: string
+        nickname:
+          type: string
+        power:
+          type: integer
+      required:
+        - email
+        - nickname
+        - power
+    Players:
+      type: array
+      items:
+        $ref: '#/components/schemas/Player'
+

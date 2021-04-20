@@ -13,7 +13,7 @@ servers:
     description: Localhost pavlov-central API
 tags:
   - name: servers
-    description: Gamve servers
+    description: Game servers
   - name: players
     description: Game players
   - name: ban-list

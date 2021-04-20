@@ -6,10 +6,12 @@ from peewee_migrate.router import Router, load_models
 from peewee_migrate.auto import diff_many
 import pavlov_central.storage
 from pavlov_central.storage.models.base_model import DB
+from pavlov_central.api.encoder import JSONEncoder
 
 
 def start_api():
     app = connexion.FlaskApp(__name__, specification_dir='./api/openapi/')
+    app.app.json_encoder = JSONEncoder
     app.app.config['JSON_SORT_KEYS'] = False
     app.add_api('openapi.yaml')
     app.run(port=5000)
